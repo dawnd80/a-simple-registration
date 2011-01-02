@@ -1,0 +1,9 @@
+How to get this app up and running:
+
+1. Install bundler: gem install bundler
+
+2. bundle install
+
+3. rake db:migrate
+
+4. script/server
