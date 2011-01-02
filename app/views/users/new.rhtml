@@ -1,0 +1,15 @@
+<% form_for @user do |form| %>
+    <%= form.error_messages %>
+    <%= form.hidden_field :activated %>
+    <fieldset>
+      <legend>Register an account</legend>
+      <ol>
+        <li>
+            <label>Email: </label>
+            <%= form.text_field :email %>
+        </li>
+      </ol>
+    </fieldset>
+    <p><%= form.submit :create %></p>
+
+<% end %>

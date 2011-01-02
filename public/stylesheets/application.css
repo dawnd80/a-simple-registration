@@ -1,0 +1,57 @@
+.content {
+  margin: 10px 20px;
+}
+  
+fieldset {
+  margin-top: 10px;
+  width: 600px;
+}
+
+ol {
+  list-style-type: none;
+}
+
+ol li {
+  margin: 5px 0;
+}
+
+ol li label {
+  float: left;
+  width: 100px;
+}
+
+table th {
+  text-align: left;
+  padding: 2px 8px;
+  background: #EEE;
+}
+
+table td {
+  padding: 5px 8px;
+}
+
+
+.errorExplanation {
+  background-color: #fffadf;
+  border: 1px solid #b0b0b0;
+  color: #940c00;
+  margin: 10px 0;
+  padding: 0 5px;
+  width: 612px;
+}
+.errorExplanation h2 {
+  display: none;
+}
+.errorExplanation p {
+  font-weight: bold;
+  padding: 0 5px 0 4px;
+}
+.errorExplanation ul {
+  margin: 0;
+  padding: 0;
+  margin-left: 20px;
+}
+.errorExplanation ul li {
+  padding: 4px;
+}
+

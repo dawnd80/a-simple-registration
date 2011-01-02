@@ -1,0 +1,41 @@
+<h3>Please fill out the form below to complete your registration</h3>
+
+<% form_for @user do |form| %>
+    <fieldset>
+      <legend>Personal Information</legend>
+      <%= form.hidden_field :id %>
+      <ol>
+        <li>
+            <label>Email: </label>
+            <%= h @user.email %>
+            <%= form.hidden_field :email %>
+        </li>
+        <li>
+          <label>Birthdate: </label>
+          <%= form.date_select(:birthdate, :start_year => 1900, :end_year => Date.current.year) %>
+        </li>
+        <li>
+          <label>Address: </label>
+          <%= form.text_field :address, :size => 60 %>
+        </li>
+      </ol>
+    </fieldset>
+    <fieldset>
+      <legend>Job Histories (Optional)</legend>
+      <ol>
+        <% form.fields_for :job_histories do |job| %>
+          <li>
+            <label>Title: </label>
+            <%= job.text_field :title %>
+          </li>
+          <li>
+            <label>Company: </label>
+            <%= job.text_field :company %>
+          </li>
+          <li>&nbsp;</li>
+        <% end %>
+      </ol>
+    </fieldset>
+    <p><%= form.submit :update %></p>
+
+<% end %>
