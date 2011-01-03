@@ -1,6 +1,22 @@
 <h3>Edit your personal information:</h3>
 
 <% form_for @user do |form| %>
+    <%= form.error_messages %>
+    <% if !@registering %>
+    <fieldset>
+      <legend>Change Password</legend>
+      <ol>
+        <li>
+          <%= form.label :password, "New Password: " %>
+          <%= form.password_field :password %>
+        </li>
+        <li>
+          <%= form.label :password_confirmation, "Confirmation: " %>
+          <%= form.password_field :password_confirmation %>
+        </li>
+      </ol>
+    </fieldset>
+    <% end %>
     <fieldset>
       <legend>Personal Information</legend>
       <%= form.hidden_field :id %>
@@ -10,6 +26,16 @@
             <%= h @user.email %>
             <%= form.hidden_field :email %>
         </li>
+        <% if !@registering %>
+        <li>
+          <%= form.label :first_name, "First Name: " %>
+          <%= form.text_field :first_name %>
+        </li>
+        <li>
+          <%= form.label :last_name, "Last Name: " %>
+          <%= form.text_field :last_name %>
+        </li>
+        <% end %>
         <li>
           <%= form.label :birthdate, "Birthdate: " %>
           <%= form.date_select(:birthdate, :start_year => 1900, :end_year => Date.current.year) %>

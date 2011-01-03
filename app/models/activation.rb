@@ -6,10 +6,7 @@ class Activation < ActiveRecord::Base
   validates_format_of :email, :with => %r{^(?:[_a-z0-9-]+)(\.[_a-z0-9-]+)*@([a-z0-9-]+)(\.[a-zA-Z0-9\-\.]+)*(\.[a-z]{2,4})$}i
 
   def ensure_unique_key
-    until unique_key?
-      puts "unique_key"
-      self.unique_key = ActiveSupport::SecureRandom.hex(20) 
-    end
+    self.unique_key = ActiveSupport::SecureRandom.hex(20) until unique_key?
   end
   
   def unique_key?

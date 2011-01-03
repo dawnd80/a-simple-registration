@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         @user_session.save
-        format.html { redirect_to edit_user_url(@user.id)}
+        format.html { redirect_to edit_user_url(@user.id, :registering => true)}
       else
         format.html { render :action => "new" }
       end
@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @registering = params[:registering]
     recorded_jobs = @user.job_histories.size
     (7-recorded_jobs).times { @user.job_histories.build }
     respond_to do |format|
@@ -42,8 +43,13 @@ class UsersController < ApplicationController
       job.destroy
     }
     respond_to do |format|
-      @user.update_attributes(edit_params)
-      format.html { redirect_to user_url(@user.id) }
+      if @user.update_attributes(edit_params)
+        format.html { redirect_to user_url(@user.id) }
+      else
+        recorded_jobs = @user.job_histories.size
+        (7-recorded_jobs).times { @user.job_histories.build }
+        format.html { render :action => "edit" }
+      end
     end
   end
   
