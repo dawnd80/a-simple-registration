@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
-  
+  skip_before_filter :authorize, :only => [:new, :create]
+
   def new
-    @user = User.new(:activated => false)
+    activation = Activation.find_by_unique_key(params[:key])
+    activation.update_attribute('activated', true)
+    @user = User.new(:email => activation.email)
     respond_to do |format|
       format.html
     end
@@ -9,10 +12,11 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
+    @user_session = UserSession.new(:email => params[:user][:email], :password => params[:user][:password])
     respond_to do |format|
       if @user.save
-        #send email
-        format.html { redirect_to edit_user_url(@user.id) }
+        @user_session.save
+        format.html { redirect_to edit_user_url(@user.id)}
       else
         format.html { render :action => "new" }
       end
@@ -30,7 +34,7 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    edit_params = params[:user].merge({:activated => true})
+    edit_params = params[:user]
     edit_params[:job_histories_attributes].delete_if{ |k, v| v[:title].empty? and v[:company].empty? }
     job_deleted = @user.job_history_ids - edit_params[:job_histories_attributes].map{|k, v| v[:id].to_i}
     job_deleted.each{|v|

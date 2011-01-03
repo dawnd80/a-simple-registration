@@ -1,4 +1,4 @@
-<h3>Please fill out the form below to complete your registration</h3>
+<h3>Edit your personal information:</h3>
 
 <% form_for @user do |form| %>
     <fieldset>
@@ -11,11 +11,11 @@
             <%= form.hidden_field :email %>
         </li>
         <li>
-          <label>Birthdate: </label>
+          <%= form.label :birthdate, "Birthdate: " %>
           <%= form.date_select(:birthdate, :start_year => 1900, :end_year => Date.current.year) %>
         </li>
         <li>
-          <label>Address: </label>
+          <%= form.label :address, "Address: " %>
           <%= form.text_field :address, :size => 60 %>
         </li>
       </ol>
@@ -25,11 +25,11 @@
       <ol>
         <% form.fields_for :job_histories do |job| %>
           <li>
-            <label>Title: </label>
+            <%= form.label :title, "Title: " %>
             <%= job.text_field :title %>
           </li>
           <li>
-            <label>Company: </label>
+            <%= form.label :company, "Company: " %>
             <%= job.text_field :company %>
           </li>
           <li>&nbsp;</li>

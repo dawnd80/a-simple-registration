@@ -1,15 +1,29 @@
-<% form_for @user do |form| %>
-    <%= form.error_messages %>
-    <%= form.hidden_field :activated %>
-    <fieldset>
-      <legend>Register an account</legend>
-      <ol>
-        <li>
-            <label>Email: </label>
-            <%= form.text_field :email %>
-        </li>
-      </ol>
-    </fieldset>
-    <p><%= form.submit :create %></p>
+<h3>Please fill out the form below to complete your registration</h3>
 
+<% form_for @user do |form| %>
+  <%= form.hidden_field :email %>
+  <%= form.error_messages %>
+  <fieldset>
+    <legend>Account Information</legend>
+    <ol>
+      <li><label>Email: </label><span><%= @user.email %></span></li>
+      <li>
+          <%= form.label :first_name, "First Name: " %>
+          <%= form.text_field :first_name %>
+      </li>
+      <li>
+        <%= form.label :last_name, "Last Name: " %>
+        <%= form.text_field :last_name %>
+      </li>
+      <li>
+        <%= form.label :password, "Password: " %>
+        <%= form.password_field :password %>
+      </li>
+      <li>
+        <%= form.label :password_confirmation, "Password Confirmation: " %>
+        <%= form.password_field :password_confirmation %>
+      </li>
+    </ol>
+  </fieldset>
+  <p><%= form.submit :create_user %></p>
 <% end %>

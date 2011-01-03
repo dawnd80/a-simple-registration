@@ -1,0 +1,15 @@
+<% form_for @activation do |form| %>
+    <%= form.error_messages %>
+    <%= form.hidden_field :activated %>
+    <fieldset>
+      <legend>Register an account or <%= link_to "Login", login_url %></legend>
+      <ol>
+        <li>
+            <%= form.label :email, "Email: " %>
+            <%= form.text_field :email %>
+        </li>
+      </ol>
+    </fieldset>
+    <p><%= form.submit :create %></p>
+
+<% end %>

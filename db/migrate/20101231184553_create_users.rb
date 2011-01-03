@@ -2,7 +2,11 @@ class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
       t.string :email
-      t.boolean :activated
+      t.string :first_name
+      t.string :last_name
+      t.string :crypted_password
+      t.string :password_salt
+      t.string :persistence_token
       t.datetime :birthdate
       t.string :address
       t.timestamps

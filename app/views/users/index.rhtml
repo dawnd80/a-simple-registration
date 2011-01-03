@@ -1,17 +1,17 @@
 <h3>Registered Users:</h3>
 <table>
   <tr>
-    <th>email</th>
-    <th>activated</th>
-    <th>birthday</th>
-    <th>address</th>
+    <th>Email</th>
+    <th>Name</th>
+    <th>Birthday</th>
+    <th>Address</th>
   </tr>
   <% @users.each do |user| %>
   <tr>
     <td><%=h user.email %></th>
-    <td><%=user.activated %></th>
-    <td><%=user.birthdate.to_s(:mdy) %></th>
-    <td><%=h user.address %></th>
+    <td><%=h user.full_name %></th>
+    <td><%=user.birthdate.to_s(:mdy) if user.birthdate %></th>
+    <td><%=h user.address.to_s %></th>
   </tr>
   <% end %>
 </table>

@@ -1,0 +1,14 @@
+<% content_for :title, "Log in" %>
+
+<% form_for @user_session do |form| %>
+  <%= form.error_messages %>
+  <ol>
+    <li><%= form.label :email, "Email: " %>
+        <%= form.text_field :email %>
+    </li>
+    <li><%= form.label :password, "Password: " %>
+        <%= form.password_field :password %>
+    </li>
+    <li><%= form.submit :Login %></li>
+  <ol>
+<% end %>

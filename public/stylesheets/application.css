@@ -1,5 +1,7 @@
 .content {
   margin: 10px 20px;
+  font-family: Verdana, Arial, "sans-sarif";
+  font-size: 14px;
 }
   
 fieldset {
@@ -12,22 +14,25 @@ ol {
 }
 
 ol li {
-  margin: 5px 0;
+  margin: 8px 0;
 }
 
 ol li label {
   float: left;
   width: 100px;
+  font-size: 13px;
 }
 
 table th {
   text-align: left;
   padding: 2px 8px;
   background: #EEE;
+  font-size: 12px;
 }
 
 table td {
   padding: 5px 8px;
+  font-size: 14px;
 }
 
 
@@ -38,9 +43,11 @@ table td {
   margin: 10px 0;
   padding: 0 5px;
   width: 612px;
+  font-size: 12px;
 }
 .errorExplanation h2 {
   display: none;
+  font-size: 14px;
 }
 .errorExplanation p {
   font-weight: bold;
@@ -50,6 +57,7 @@ table td {
   margin: 0;
   padding: 0;
   margin-left: 20px;
+  margin-bottom: 10px;
 }
 .errorExplanation ul li {
   padding: 4px;

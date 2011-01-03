@@ -6,7 +6,8 @@
   <legend>Personal Information</legend>
   <ol>
     <li><label>Email: </label> <span><%= h @user.email %></span> </li>
-    <li><label>Birthdate: </label> <span><%= @user.birthdate.to_s(:mdy) %></span> </li>
+    <li><label>Name: </label> <span><%= h @user.full_name %></span> </li>
+    <li><label>Birthdate: </label> <span><%= @user.birthdate.to_s(:mdy) if @user.birthdate %></span> </li>
     <li><label>Address: </label> <span><%= h @user.address %></span> </li>
   </ol>
 </fieldset>
