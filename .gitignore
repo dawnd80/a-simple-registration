@@ -1,0 +1,5 @@
+.bundle/*
+
+db/schema.rb
+log/*
+
